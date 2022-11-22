@@ -5,6 +5,7 @@ const mysql = require('mysql');
 const passport = require('passport');
 const fs = require('fs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const { mainModule } = require('process');
 
 const app = express();
 const PORT = 52273;
@@ -28,8 +29,6 @@ const options = {
 const connection = mysql.createConnection(options);
 
 const bgm_src = []
-
-
 
 connection.connect();
 connection.query('SELECT * from bgm', (error, rows) => {
@@ -131,7 +130,7 @@ passport.use(
 // login 화면
 // 이미 로그인한 회원이라면(session 정보가 존재한다면) main화면으로 리다이렉트
 app.get("/login", (req, res) => {
-    if (req.user) return res.redirect("/");
+    if (req.user) return res.redirect("/mypage");
     fs.readFile("./public/html/login.html", (error, data) => {
         if (error) {
             console.log(error);
@@ -144,7 +143,7 @@ app.get("/login", (req, res) => {
 
 // login 화면
 // 로그인 하지 않은 회원이라면(session 정보가 존재하지 않는다면) login화면으로 리다이렉트
-app.get("/", (req, res) => {
+app.get("/mypage", (req, res) => {
     if (!req.user) return res.redirect("/login");
     fs.readFile("./public/html/mypage.html", (error, data) => {
         if (error) {
@@ -168,7 +167,7 @@ app.get(
 app.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-        successRedirect: "/",
+        successRedirect: "/mypage",
         failureRedirect: "/login",
     })
 );
@@ -181,6 +180,7 @@ app.get("/logout", (req, res) => {
     });
 });
 
+// 노래 끝날 때 다음 노래 찾기
 app.get('/music', (request, response) => {
     console.log("query:" + request.query);
     if (request.query.num == null) {
@@ -199,14 +199,13 @@ app.get('/music', (request, response) => {
 
         console.log(result)
         response.json(result);
-        /*response.set("src", bgm_src[num]);
-        response.set("size", bgm_src.length);*/
     }
 });
 
 // 라우팅 정의
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/html/test.html");
+    res.redirect("/select");
+
 });
 
 // 서버 실행
@@ -214,3 +213,20 @@ app.listen(PORT, () => {
     console.log(`Listen : ${PORT}`);
 });
 
+//여행지 선택 화면 호출
+app.get("/select", (req, res) => {
+    res.sendFile(__dirname + "/public/html/select.html");
+})
+
+
+//영상 페이지
+app.get("/main", (req, res) => {
+    res.sendFile(__dirname + "/public/html/main.html");
+
+})
+
+
+//상세 페이지
+app.get("/detail", (req, res) => {
+    res.sendFile(__dirname + "/public/html/detail.html");
+})
