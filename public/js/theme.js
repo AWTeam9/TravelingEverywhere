@@ -16,9 +16,12 @@ for(var i = 0; i < THEME_SIZE; i++){
     scrollMenu.setAttribute("class", "scroll-menu");
 
     for(var j = 0; j < themeItemNumbers[i]; j++) {
+        const link = document.createElement("a");
+        link.href = "../html/main.html" // TODO: 디비에서 가져온 영상 링크로 대체하기 
         const img = document.createElement("img");
         img.src = `../img/theme/${folderNames[i]}/${j+1}.jpg`;
-        scrollMenu.appendChild(img);
+        link.appendChild(img);
+        scrollMenu.appendChild(link);
     }
     theme.appendChild(scrollMenu);
 
