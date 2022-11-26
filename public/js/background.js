@@ -5,7 +5,7 @@ for(var i = 0; i < BACKGROUND_IMAGE_SIZE; i++){
 }
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
-const filePath = `../img/${chosenImage}`;
+const filePath = `../img/background/${chosenImage}`;
 
 document.body.style.backgroundImage =  `url(${filePath})`
 
