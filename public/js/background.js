@@ -1,7 +1,11 @@
-const images = ["beach.jpg", "beach2.jpg", "city.jpg", "city2.jpg", 
-                "mountain.jpg", "village.jpg", "village2.jpg", 
-                "village3.jpg", "village4.jpg"];
+const BACKGROUND_IMAGE_SIZE = 8;
+const images = [];
+for(var i = 0; i < BACKGROUND_IMAGE_SIZE; i++){
+    images[i] = `${i + 1}.jpg`;
+}
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
-const imgUrl = `../img/${chosenImage}`;
-document.body.style.backgroundImage =  `url(${imgUrl})`
+const filePath = `../img/${chosenImage}`;
+
+document.body.style.backgroundImage =  `url(${filePath})`
+
