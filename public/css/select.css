@@ -2,13 +2,13 @@ body {
     padding: 20px;
 }
 
-.scrollmenu {
+.scroll-menu {
     overflow: auto;
     white-space: nowrap;
 }
 
-.scrollmenu img {
-    width: 300px;
+.scroll-menu img {
+    width: 400px;
     height: 300px;
     margin-right: 24px;
     border-radius: 15px;
