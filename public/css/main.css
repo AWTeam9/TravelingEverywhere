@@ -17,11 +17,22 @@ body {
     height: 100%;
 }
 
+.material-icons {
+    position: absolute;
+    color: gray;
+    display: block;
+    margin: 5px;
+    top: 0;
+    right: 0;
+}
+
 .side-bar {
     position: absolute;
-    background-color: rgb(0, 0, 0); 
+    background-color: white;
+    display: none;
     width: 20%;
     height: 100%;
     top: 0;
     right: 0;
 }
+
