@@ -1,0 +1,21 @@
+body {
+    padding: 20px;
+}
+
+.scroll-menu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.scroll-menu img {
+    width: 400px;
+    height: 300px;
+    margin-right: 24px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px gray;
+    margin-bottom: 50px;
+}
+
+.topbar {
+    float: right;
+}
