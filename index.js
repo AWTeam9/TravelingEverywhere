@@ -14,8 +14,8 @@ const PORT = 52273;
 
 
 //Google Developers Console 의 client ID와 secret
-const GOOGLE_CLIENT_ID = "16629164150-h6mgnpg47njj91lm1khuskgbaip22tp9.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+const GOOGLE_CLIENT_ID = env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = env.GOOGLE_CLIENT_SECRET;
 
 
 // db session store options
@@ -249,12 +249,8 @@ app.get("/main", async (req, res) => {
             )
         })
     }
-    //쿼리로 해당 영상 정보 보내주면
-    //db에서 찾아서 영상 넣어주기
 
 })
-
-
 
 
 //상세 페이지 
@@ -264,21 +260,3 @@ app.get("/detail", (req, res) => {
     // main에서의 쿼리와 같은 방식으로 받아주기
 
 })
-
-
-getVideoUrl = function (location) {
-
-    connection.query("SELECT url from Video where location=?",
-        location,
-        function (error, item) {
-            if (error)
-                throw error;
-
-            main_video_url = item[0].url;
-        }
-    )
-}
-
-editVideoUrl = function (url) {
-    url_src = url;
-}
