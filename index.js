@@ -6,6 +6,8 @@ const passport = require('passport');
 const fs = require('fs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { mainModule } = require('process');
+var ejs = require('ejs');
+const { response } = require('express');
 
 const app = express();
 const PORT = 52273;
@@ -29,6 +31,7 @@ const options = {
 const connection = mysql.createConnection(options);
 
 const bgm_src = []
+let main_video_url = ""
 
 connection.connect();
 connection.query('SELECT * from bgm', (error, rows) => {
@@ -181,14 +184,14 @@ app.get("/logout", (req, res) => {
 });
 
 // 노래 끝날 때 다음 노래 찾기
-app.get('/music', (request, response) => {
-    console.log("query:" + request.query);
-    if (request.query.num == null) {
-        response.sendFile(__dirname + "/public/html/test.html");
-        console.log(request.query);
+app.get('/music', (req, res) => {
+    console.log("query:" + req.query);
+    if (req.query.num == null) {
+        res.sendFile(__dirname + "/public/html/test.html");
+        console.log(req.query);
     } else {
-        console.log(request.query)
-        num = parseInt(request.query.num)
+        console.log(req.query)
+        num = parseInt(req.query.num)
 
         num = num % bgm_src.length;
 
@@ -198,14 +201,13 @@ app.get('/music', (request, response) => {
         }
 
         console.log(result)
-        response.json(result);
+        res.json(result);
     }
 });
 
 // 라우팅 정의
 app.get("/", (req, res) => {
     res.redirect("/select");
-
 });
 
 // 서버 실행
@@ -216,17 +218,67 @@ app.listen(PORT, () => {
 //여행지 선택 화면 호출
 app.get("/select", (req, res) => {
     res.sendFile(__dirname + "/public/html/select.html");
+    //영상 자료 넣어줘야 하나?
 })
+
 
 
 //영상 페이지
-app.get("/main", (req, res) => {
-    res.sendFile(__dirname + "/public/html/main.html");
+app.get("/main", async (req, res) => {
+    console.log("query:" + req.query.location);
+    var url_src = "";
+
+    if (req.query.location == null) {
+        res.redirect("/select");
+        console.log(req.query);
+    } else {
+        console.log(req.query);
+
+        fs.readFile(__dirname + "/public/html/main.html", 'utf-8', function (error, data) {
+            connection.query("SELECT url from Video where location=?",
+                req.query.location,
+                function (error, item) {
+                    if (error)
+                        throw error;
+
+                    res.send(ejs.render(data, {
+                        data: item[0]
+                    }))
+
+                }
+            )
+        })
+    }
+    //쿼리로 해당 영상 정보 보내주면
+    //db에서 찾아서 영상 넣어주기
 
 })
 
 
-//상세 페이지
+
+
+//상세 페이지 
 app.get("/detail", (req, res) => {
     res.sendFile(__dirname + "/public/html/detail.html");
+    // 해당 장소 정보 매칭해주기
+    // main에서의 쿼리와 같은 방식으로 받아주기
+
 })
+
+
+getVideoUrl = function (location) {
+
+    connection.query("SELECT url from Video where location=?",
+        location,
+        function (error, item) {
+            if (error)
+                throw error;
+
+            main_video_url = item[0].url;
+        }
+    )
+}
+
+editVideoUrl = function (url) {
+    url_src = url;
+}
