@@ -39,7 +39,7 @@ body {
 
 .side-panel {
     display: none;
-    width: 200px;
+    width: 270px;
     flex-shrink: 0;
     padding: 20px;
     color: white;
