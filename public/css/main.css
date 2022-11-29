@@ -1,38 +1,65 @@
 body {
     padding: 0;
     margin: 0;
+    font-family: sans-serif;
+    line-height: 1.5;
 }
 
-.video-container {
-    position: relative;
-    width: 100vw;
+.wrapper {
+    display: flex;
     height: 100vh;
 }
 
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.main {
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
-.material-icons {
-    position: absolute;
-    color: gray;
-    display: block;
-    margin: 5px;
-    top: 0;
-    right: 0;
+.side-panel-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+
+    color: white;
+    background: #009578;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    cursor: pointer;
 }
 
-.side-bar {
-    position: absolute;
-    background-color: white;
+.side-panel-toggle:hover {
+    background: #007960;
+}
+
+.sp-icon-close {
+    display: none !important;
+}
+
+.side-panel {
     display: none;
-    width: 20%;
-    height: 100%;
-    top: 0;
-    right: 0;
+    width: 200px;
+    flex-shrink: 0;
+    padding: 20px;
+    color: white;
+    background: #009578;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
+.side-panel-open .side-panel {
+    display: initial;
+}
+
+.side-panel-open .sp-icon-open {
+    display: none !important;
+}
+
+.side-panel-open .sp-icon-close {
+    display: initial !important;
+}
+
+.hidden {
+    display: non;
+}

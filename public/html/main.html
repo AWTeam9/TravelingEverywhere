@@ -11,22 +11,24 @@
 </head>
 
 <body>
-    <div class="video-container">
-        <iframe title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-
-        <span class="material-icons">visibility</span>
-        <div class="side-bar">
-            <!-- TODO: 현재 여행지에 대한 상세 정보 보여주기 -->
-            <a href="../html/detail.html"><p>Detail Info</p></a>
-            
+    <div class="wrapper">
+        <div class="main">
+            <iframe title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <button class="side-panel-toggle" type="button">
+            <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+            <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+        </button>
+        <div class="side-panel hidden">
+            This is the side panel content.
         </div>
     </div>
 
     <script src="../js/video.js"></script>
-    <script src="../js/sidebar.js"></script>
+    <script src="../js/sidepanel.js"></script>
 </body>
 
 </html>
