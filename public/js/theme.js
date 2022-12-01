@@ -8,6 +8,7 @@ for(var i = 0; i < THEME_SIZE; i++){
 
     // 테마 이름 출력 
     const themeName = document.createElement("h2");
+    themeName.setAttribute("class", "theme-name");
     themeName.innerText = themeNames[i];
     theme.appendChild(themeName);
 
