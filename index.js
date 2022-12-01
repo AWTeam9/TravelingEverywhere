@@ -12,14 +12,14 @@ const { response } = require('express');
 const app = express();
 const PORT = 52273;
 
-
-//Google Developers Console 의 client ID와 secret
-const GOOGLE_CLIENT_ID = env.GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = env.GOOGLE_CLIENT_SECRET;
-
-
 // db session store options
 require('dotenv').config();
+
+//Google Developers Console 의 client ID와 secret
+const GOOGLE_CLIENT_ID = process.env.client_id;
+const GOOGLE_CLIENT_SECRET = process.env.client_secret;
+
+
 
 const options = {
     host: 'localhost',
@@ -31,7 +31,6 @@ const options = {
 const connection = mysql.createConnection(options);
 
 const bgm_src = []
-let main_video_url = ""
 
 connection.connect();
 connection.query('SELECT * from bgm', (error, rows) => {
@@ -128,7 +127,15 @@ passport.use(
     )
 );
 
+// 라우팅 정의
+app.get("/", (req, res) => {
+    res.redirect("/select");
+});
 
+// 서버 실행
+app.listen(PORT, () => {
+    console.log(`Listen : ${PORT}`);
+});
 
 // login 화면
 // 이미 로그인한 회원이라면(session 정보가 존재한다면) main화면으로 리다이렉트
@@ -148,14 +155,34 @@ app.get("/login", (req, res) => {
 // 로그인 하지 않은 회원이라면(session 정보가 존재하지 않는다면) login화면으로 리다이렉트
 app.get("/mypage", (req, res) => {
     if (!req.user) return res.redirect("/login");
-    fs.readFile("./public/html/mypage.html", (error, data) => {
+    fs.readFile("./public/html/mypage.html", "utf-8", (error, data) => {
         if (error) {
             console.log(error);
             return res.sendStatus(500);
         }
+        else {
+            connection.query("SELECT * from userInfo where userId=?",
+                req.user,
+                function (error, item) {
 
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.end(data);
+                    console.log(req.user);
+                    if (error)
+                        throw error;
+
+                    res.send(ejs.render(data, {
+                        data: item[0]
+                    }))
+
+                }
+            );
+
+
+            //connection.query("SELECT * from ") todo 랭킹 차트 불러오기
+        }
+
+
+        // res.writeHead(200, { "Content-Type": "text/html" });
+        // res.end(data);
     });
 });
 
@@ -205,15 +232,7 @@ app.get('/music', (req, res) => {
     }
 });
 
-// 라우팅 정의
-app.get("/", (req, res) => {
-    res.redirect("/select");
-});
 
-// 서버 실행
-app.listen(PORT, () => {
-    console.log(`Listen : ${PORT}`);
-});
 
 //여행지 선택 화면 호출
 app.get("/select", (req, res) => {
@@ -221,6 +240,8 @@ app.get("/select", (req, res) => {
     //영상 자료 넣어줘야 하나?
 })
 
+var start_time;
+var end_time;
 
 
 //영상 페이지
@@ -233,6 +254,7 @@ app.get("/main", async (req, res) => {
         console.log(req.query);
     } else {
         console.log(req.query);
+
 
         fs.readFile(__dirname + "/public/html/main.html", 'utf-8', function (error, data) {
             connection.query("SELECT url from Video where location=?",
@@ -255,8 +277,29 @@ app.get("/main", async (req, res) => {
 
 //상세 페이지 
 app.get("/detail", (req, res) => {
-    res.sendFile(__dirname + "/public/html/detail.html");
-    // 해당 장소 정보 매칭해주기
-    // main에서의 쿼리와 같은 방식으로 받아주기
+    console.log("query:" + req.query.location);
+    if (req.query.location == null) {
+        res.redirect("/select");
+        console.log(req.query);
+    } else {
+        console.log(req.query);
+        fs.readFile(__dirname + "/public/html/detail.html", 'utf-8', function (error, data) {
+            connection.query("SELECT * from locationInfo where locationName=?",
+                req.query.location,
+                function (error, item) {
+                    if (error)
+                        throw error;
 
-})
+                    res.send(ejs.render(data, {
+                        data: item[0]
+                    }))
+
+                }
+            )
+        })
+        // 해당 장소 정보 매칭해주기
+        // main에서의 쿼리와 같은 방식으로 받아주기
+
+    }
+}
+)
