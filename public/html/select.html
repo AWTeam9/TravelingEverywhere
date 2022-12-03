@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/select.css">
     <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/hearder.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <title>Traveling Everywhere</title>
 </head>
 
@@ -15,12 +17,21 @@
         <div class="top-bar">
             <span id="logo">Traveling Everywhere</span>
             <nav>
-                <button class="nav-buttons" id="login-btn">LogIn</button>
+                <button class="nav-buttons" id="login-btn">Log In</button>
                 <button class="nav-buttons" id="map-btn">Go to World Map</button>
             </nav>
         </div>
     </header>
-    <div class="contents"></div>
+
+    <div class="contents">
+        <!-- <div class="theme-list">
+            <h2 class="theme-name"></h2>
+            <div class="scroll-menu">
+                <a href=""><img class="place-img" src=""></a>
+            </div>
+        </div> -->
+    </div>
+
     <footer>
         <div id="contact">
             <p>이하은 jxlhe46@seoultech.ac.kr</p>
@@ -28,13 +39,13 @@
         </div>
     </footer>
 
-    <script src="../js/theme.js"></script>
-
     <script>
         document.getElementById("login-btn").addEventListener("click", () => {
             document.location.href = "./login.html";
         });
     </script>
+
+    <script src="../js/theme.js"></script>
 </body>
 
 </html>
