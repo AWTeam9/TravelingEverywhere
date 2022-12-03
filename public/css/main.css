@@ -39,6 +39,7 @@ body {
 
 .side-panel {
     display: none;
+    position: relative;
     width: 320px;
     flex-shrink: 0;
     padding: 15px;
@@ -63,9 +64,26 @@ body {
     display: none;
 }
 
-.top-buttons button a {
+.button {
+    outline: none;
+    cursor: pointer;
+}
+
+#detail-btn a {
     color: black;
     text-decoration: none;
+}
+
+#mypage-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#home-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
 }
 
 .place-list {

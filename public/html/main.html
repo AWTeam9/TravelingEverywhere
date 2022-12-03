@@ -22,36 +22,49 @@
         </button>
 
         <div class="side-panel hidden">
-            <div class="top-buttons">
-                <button><a href="./detail.html">Detail</a></button>
-                <button><a href="./mypage.html">My Page</a></button>
-            </div>
+            <button class="button" id="detail-btn"><a href="./detail.html">Detail</a></button>
+
+            <span class="material-icons button" id="mypage-btn" >
+                account_circle
+            </span>
 
             <div class="place-list"></div>
 
             <div class="video-speed-box">
                 <span style="font-size: 14px;">Video Speed</span>
                 <div class="video-speed-buttons">
-                    <button id="speed1-btn">1x</button>
-                    <button id="speed2-btn">1.5x</button>
-                    <button id="speed3-btn">2.0x</button>
+                    <button class="button" id="speed1-btn">1x</button>
+                    <button class="button" id="speed2-btn">1.5x</button>
+                    <button class="button" id="speed3-btn">2.0x</button>
                 </div>
             </div>
 
             <div class="video-sound-box">
                 <span style="font-size: 14px;">Video Sound</span>
-                <button id="sound-toggle-btn">OFF</button>
+                <button class="button" id="sound-toggle-btn">OFF</button>
             </div>
 
             <div class="radio">
                 <p>Radio</p>
             </div>
+
+            <span class="material-icons button" id="home-btn">
+                home
+            </span>
         </div>
     </div>
 
     <script src="../js/video.js"></script>
     <script src="../js/sidepanel.js"></script>
     <script src="../js/placelist.js"></script>
+    <script>
+        document.getElementById("mypage-btn").addEventListener("click", () => {
+            document.location.href = "./mypage.html";
+        })
+        document.getElementById("home-btn").addEventListener("click", () => {
+            document.location.href = "./index.html";
+        })
+    </script>
 </body>
 
 </html>
