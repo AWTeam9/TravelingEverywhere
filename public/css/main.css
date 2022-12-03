@@ -1,9 +1,148 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: black;
 }
 
-iframe {
-    width: 100vw;
+.wrapper {
+    display: flex;
     height: 100vh;
+}
+
+.wrapper iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.side-panel-toggle {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+
+    color: white;
+    background: #009578;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.side-panel-toggle:hover {
+    background: #007960;
+}
+
+.sp-icon-close {
+    display: none !important;
+}
+
+.side-panel {
+    display: none;
+    position: relative;
+    width: 320px;
+    flex-shrink: 0;
+    padding: 15px;
+    color: white;
+    background: #009578;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.side-panel-open .side-panel {
+    display: initial;
+}
+
+.side-panel-open .sp-icon-open {
+    display: none !important;
+}
+
+.side-panel-open .sp-icon-close {
+    display: initial !important;
+}
+
+.hidden {
+    display: none;
+}
+
+.button {
+    outline: none;
+    cursor: pointer;
+}
+
+#detail-btn a {
+    color: black;
+    text-decoration: none;
+}
+
+#mypage-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#home-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+}
+
+.place-list {
+    height: 200px;
+    overflow-y: scroll;
+    background: #007960;
+    margin-top: 20px;
+}
+
+.theme-name {
+    background: #005846;
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.theme-item {
+    padding: 10px;
+    margin: 0;
+    font-size: 14px;
+}
+
+.theme-item:hover {
+    background: #016d57;
+}
+
+.video-speed-box {
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.video-speed-buttons {
+    float: right;
+}
+
+.video-sound-box {
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#sound-toggle-btn {
+    float: right;
+}
+
+.radio-box {
+    padding: 5px;
+    margin-top: 20px;
+    background: #007960;
+}
+
+.radio-controller {
+    text-align: center;
+}
+
+.radio-play-toggle {
+    display: inline-block;
+    color: white;
+    background: #007960;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }

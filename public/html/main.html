@@ -6,16 +6,90 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Traveling Everywhere</title>
 </head>
 
 <body>
-    <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/RvZFYE5jo1M?autoplay=1&mute=1&loop=1&controls=0" title="YouTube video player"
-            frameborder="0"
+    <div class="wrapper">
+        <iframe title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+            allowfullscreen>
+        </iframe>
+        <button class="side-panel-toggle" type="button">
+            <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
+            <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
+        </button>
+
+        <div class="side-panel hidden">
+            <button class="button" id="detail-btn"><a href="./detail.html">Detail</a></button>
+
+            <span class="material-icons button" id="mypage-btn">
+                account_circle
+            </span>
+
+            <div class="place-list"></div>
+
+            <div class="video-speed-box">
+                <span style="font-size: 14px;">Video Speed</span>
+                <div class="video-speed-buttons">
+                    <button class="button" id="speed1-btn">1x</button>
+                    <button class="button" id="speed2-btn">1.5x</button>
+                    <button class="button" id="speed3-btn">2.0x</button>
+                </div>
+            </div>
+
+            <div class="video-sound-box">
+                <span style="font-size: 14px;">Video Sound</span>
+                <button class="button" id="sound-toggle-btn">OFF</button>
+            </div>
+
+            <div class="radio-box">
+                <p style="font-size: 14px; text-align: center;">Radio</p>
+                <div class="radio-controller">
+                    <span class="material-icons button">
+                        skip_previous
+                    </span>
+
+                    <button class="radio-play-toggle" type="button">
+                        <span class="material-icons button" id="radio-icon-play">play_arrow</span>
+                        <span class="material-icons button" id="radio-icon-pause">pause</span>
+                    </button>
+
+                    <span class="material-icons button">
+                        skip_next
+                    </span>
+                </div>
+            </div>
+
+            <span class="material-icons button" id="home-btn">
+                home
+            </span>
+        </div>
     </div>
+
+    <script src="../js/video.js"></script>
+    <script src="../js/sidepanel.js"></script>
+    <script src="../js/placelist.js"></script>
+    <script>
+        document.querySelector(".side-panel-toggle").addEventListener("click", () => {
+            document.querySelector(".wrapper").classList.toggle("side-panel-open");
+        });
+
+        document.querySelector(".radio-play-toggle").addEventListener("click", () => {
+            // TODO: 아이콘 변경하기 
+        });
+
+        document.getElementById("mypage-btn").addEventListener("click", () => {
+            document.location.href = "./mypage.html";
+        });
+
+        document.getElementById("home-btn").addEventListener("click", () => {
+            document.location.href = "./index.html";
+        });
+
+       
+    </script>
 </body>
 
 </html>

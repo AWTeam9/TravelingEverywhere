@@ -8,6 +8,7 @@ for(var i = 0; i < THEME_SIZE; i++){
 
     // 테마 이름 출력 
     const themeName = document.createElement("h2");
+    themeName.setAttribute("class", "theme-name");
     themeName.innerText = themeNames[i];
     theme.appendChild(themeName);
 
@@ -18,6 +19,7 @@ for(var i = 0; i < THEME_SIZE; i++){
     for(var j = 0; j < themeItemNumbers[i]; j++) {
         const link = document.createElement("a");
         link.href = "../html/main.html" // TODO: 디비에서 가져온 영상 링크로 대체하기 
+        
         const img = document.createElement("img");
         img.src = `../img/theme/${folderNames[i]}/${j+1}.jpg`;
         link.appendChild(img);

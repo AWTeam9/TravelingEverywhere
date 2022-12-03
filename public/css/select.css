@@ -2,15 +2,20 @@ body {
     padding: 20px;
 }
 
+.theme-name {
+    margin: 20px;
+}
+
 .scroll-menu {
     overflow: auto;
     white-space: nowrap;
+    padding: 10px;
 }
 
 .scroll-menu img {
     width: 400px;
-    height: 300px;
-    margin-right: 24px;
+    height: 225px;
+    margin-right: 32px;
     border-radius: 15px;
     box-shadow: 5px 5px 5px gray;
     margin-bottom: 50px;
