@@ -20,14 +20,32 @@
             <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
         </button>
-        <div class="side-panel hidden">
-            <form action="./detail.html">
-                <button type="submit">Detail</button>
-            </form>
 
-            <div class="place-list">
+        <div class="side-panel hidden">
+            <div class="top-buttons">
+                <button><a href="./detail.html">Detail</a></button>
+                <button><a href="./mypage.html">My Page</a></button>
             </div>
 
+            <div class="place-list"></div>
+
+            <div class="video-speed-box">
+                <span style="font-size: 14px;">Video Speed</span>
+                <div class="video-speed-buttons">
+                    <button id="speed1-btn">1x</button>
+                    <button id="speed2-btn">1.5x</button>
+                    <button id="speed3-btn">2.0x</button>
+                </div>
+            </div>
+
+            <div class="video-sound-box">
+                <span style="font-size: 14px;">Video Sound</span>
+                <button id="sound-toggle-btn">OFF</button>
+            </div>
+
+            <div class="radio">
+                <p>Radio</p>
+            </div>
         </div>
     </div>
 

@@ -63,6 +63,11 @@ body {
     display: none;
 }
 
+.top-buttons button a {
+    color: black;
+    text-decoration: none;
+}
+
 .place-list {
     height: 200px;
     overflow-y: scroll;
@@ -74,15 +79,39 @@ body {
     background: #005846;
     padding: 10px;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .theme-item {
     padding: 10px;
     margin: 0;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .theme-item:hover {
     background: #016d57;
+}
+
+.video-speed-box {
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.video-speed-buttons {
+    float: right;
+}
+
+.video-sound-box {
+    padding: 5px;
+    margin-top: 20px;
+}
+
+#sound-toggle-btn {
+    float: right;
+}
+
+.radio {
+    padding: 5px;
+    margin-top: 20px;
+    background: #007960;
 }
