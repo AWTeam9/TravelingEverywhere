@@ -2,13 +2,82 @@
 <html>
 
 <head>
+    <style>
+        #total {
+            margin-right: 3%;
+            margin-left: 3%;
+        }
+
+        h2 {
+            margin-left: 3%;
+            color: #707070;
+        }
+
+        p {
+            margin-left: 3%;
+        }
+
+        img {
+            width: 500px;
+            height: auto;
+            margin-left: 10%;
+        }
+    </style>
     <script>
 
     </script>
 </head>
 
 <body>
-    <h1>detail page</h1>
+    <div id="total">
+        <h1>
+            <%= data.countryName %>
+        </h1>
+        <img src="<%= data.countryImage %>">
+        <p>
+            <%- data.countryDescription %>
+        </p>
+
+        <div>
+            <h2>코로나 이슈</h2>
+
+            <p>
+                <%- data.covidIssue %>
+            </p>
+        </div>
+
+        <div>
+            <h2>날씨</h2>
+            <p>
+                <%- data.weather %>
+            </p>
+        </div>
+
+        <div>
+            <h2>보건</h2>
+            <p>
+                <%- data.health %>
+            </p>
+        </div>
+
+        <div>
+            <h2>언어</h2>
+            <p>
+                <%- data.lang %>
+            </p>
+        </div>
+
+        <div>
+            <h2>
+                <%= data.locationName %>
+            </h2>
+            <img src="<%= data.locationImage %>">
+            <p>
+                <%- data.locationInfo %>
+            </p>
+        </div>
+    </div>
+
 </body>
 
 </html>

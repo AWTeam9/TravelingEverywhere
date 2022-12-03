@@ -4,11 +4,96 @@
 <head>
     <title>Mypage</title>
     <meta charset="UTF-8" />
+    <style>
+        #profile {
+            padding-left: 5%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            text-align: center;
+        }
+
+        #name {
+            font-weight: bold;
+            font-size: x-large;
+            margin-bottom: 5%;
+        }
+
+        #email {
+            margin-bottom: 5%;
+        }
+
+        #logout {
+            text-decoration: none;
+            color: gray;
+        }
+
+        hr {
+            width: auto;
+        }
+
+
+        #myRanking {
+            margin-top: 3%;
+            width: fit-content;
+            margin: auto;
+
+        }
+
+        #ranking {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        th,
+        td #middle {
+            width: 200px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Mypage</h1>
-    <a href="/logout">logout</a>
+    <!-- <h1>Mypage</h1> -->
+    <div id="profile">
+        <div id="name">
+            <p>
+                <%= data.displayName %>
+            </p>
+        </div>
+        <div id="email">
+            <p>
+                <%= data.email %>
+            </p>
+        </div>
+        <a id="logout" href="/logout">logout</a>
+    </div>
+    <div id="myRanking">
+        <h2>My Travel Ranking</h2>
+        <hr>
+        <table id="ranking">
+            <th>
+                <p>순위</p>
+            </th>
+            <th id="middle">
+                <p>지역</p>
+            </th>
+            <th>
+                <p>여행 시간</p>
+            </th>
+            <tr>
+                <td>
+                    <p>1</p>
+                </td>
+                <td id="middle">
+                    <p>Snoqualmie Region</p>
+                </td>
+                <td>
+                    <p>Time</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 
 </html>
