@@ -39,7 +39,7 @@ body {
 
 .side-panel {
     display: none;
-    width: 300px;
+    width: 320px;
     flex-shrink: 0;
     padding: 15px;
     color: white;
@@ -67,16 +67,22 @@ body {
     height: 200px;
     overflow-y: scroll;
     background: #007960;
+    margin-top: 20px;
 }
 
 .theme-name {
-    background: #016d57;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    background: #005846;
+    padding: 10px;
+    margin: 0;
+    font-size: 12px;
 }
 
-.theme-items {
-    padding-left: 10px;
-    padding-right: 10px;
+.theme-item {
+    padding: 10px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.theme-item:hover {
+    background: #016d57;
 }
