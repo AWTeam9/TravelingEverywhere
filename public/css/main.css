@@ -39,9 +39,9 @@ body {
 
 .side-panel {
     display: none;
-    width: 270px;
+    width: 300px;
     flex-shrink: 0;
-    padding: 20px;
+    padding: 15px;
     color: white;
     background: #009578;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
@@ -60,5 +60,23 @@ body {
 }
 
 .hidden {
-    display: non;
+    display: none;
+}
+
+.place-list {
+    height: 200px;
+    overflow-y: scroll;
+    background: #007960;
+}
+
+.theme-name {
+    background: #016d57;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.theme-items {
+    padding-left: 10px;
+    padding-right: 10px;
 }
