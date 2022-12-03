@@ -1,5 +1,58 @@
 body {
-    padding: 20px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #42A5C2;
+
+    position: fixed;
+    top: 0;
+}
+
+.top-bar {
+    display: table;
+    width: 100%;
+    height: 50px;
+}
+
+#logo {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    color: white;
+}
+
+nav {
+    float: right;
+    padding-top: 10px;
+    padding-right: 20px;
+}
+
+.contents {
+    padding-top: 60px;
+    padding-bottom: 110px;
+}
+
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #42A5C2;
+    position: absolute;
+    bottom: 0;
+}
+
+#contact {
+    color: white;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.theme-list {
+    margin: 20px;
 }
 
 .theme-name {
@@ -9,7 +62,7 @@ body {
 .scroll-menu {
     overflow: auto;
     white-space: nowrap;
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
 }
 
 .scroll-menu img {
@@ -18,9 +71,4 @@ body {
     margin-right: 32px;
     border-radius: 15px;
     box-shadow: 5px 5px 5px gray;
-    margin-bottom: 50px;
-}
-
-.topbar {
-    float: right;
 }

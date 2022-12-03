@@ -11,12 +11,30 @@
 </head>
 
 <body>
-    <div class="topbar">
-        <form action="./login.html">
-            <button id="button" type="submit">LogIn</button>
-        </form>
-    </div>
+    <header>
+        <div class="top-bar">
+            <span id="logo"><b>Traveling Everywhere</b></span>
+            <nav>
+                <button id="login-btn">LogIn</button>
+                <button id="map-btn">Go to World Map</button>
+            </nav>
+        </div>
+    </header>
+    <div class="contents"></div>
+    <footer>
+        <div id="contact">
+            <p>이하은 jxlhe46@seoultech.ac.kr</p>
+            <p>한윤재 ucando0320@seoultech.ac.kr</p>
+        </div>
+    </footer>
+
     <script src="../js/theme.js"></script>
+
+    <script>
+        document.getElementById("login-btn").addEventListener("click", () => {
+            document.location.href = "./login.html";
+        });
+    </script>
 </body>
 
 </html>
