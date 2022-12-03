@@ -128,8 +128,21 @@ body {
     float: right;
 }
 
-.radio {
+.radio-box {
     padding: 5px;
     margin-top: 20px;
     background: #007960;
+}
+
+.radio-controller {
+    text-align: center;
+}
+
+.radio-play-toggle {
+    display: inline-block;
+    color: white;
+    background: #007960;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
