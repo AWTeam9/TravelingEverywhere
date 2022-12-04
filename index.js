@@ -7,7 +7,9 @@ const fs = require('fs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { mainModule } = require('process');
 var ejs = require('ejs');
-const { response } = require('express');
+const { response, query } = require('express');
+const { connect } = require('http2');
+const bodyParser = require('body-parser')
 
 const app = express();
 const PORT = 52273;
@@ -49,6 +51,7 @@ connection.query('SELECT * from bgm', (error, rows) => {
 // mysql session store 생성
 const sessionStore = new MySQLStore(options);
 
+// app.use(frameguard());
 app.use(
     session({
         secret: "secret key",
@@ -64,6 +67,9 @@ app.use(express.static(__dirname + "/public"));
 // passport 초기화 및 session 연결
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // login이 최초로 성공했을 때만 호출되는 함수
 // done(null, user.id)로 세션을 초기화 한다.
@@ -240,20 +246,17 @@ app.get("/select", (req, res) => {
     //영상 자료 넣어줘야 하나?
 })
 
-var start_time;
-var end_time;
 
 
 //영상 페이지
 app.get("/main", async (req, res) => {
     console.log("query:" + req.query.location);
-    var url_src = "";
-
+    var place = req.query.location;
     if (req.query.location == null) {
         res.redirect("/select");
         console.log(req.query);
     } else {
-        console.log(req.query);
+        console.log(place);
 
 
         fs.readFile(__dirname + "/public/html/main.html", 'utf-8', function (error, data) {
@@ -264,13 +267,81 @@ app.get("/main", async (req, res) => {
                         throw error;
 
                     res.send(ejs.render(data, {
-                        data: item[0]
+                        data: {
+                            data: item[0],
+                            place: place
+                        }
                     }))
 
                 }
             )
         })
     }
+
+})
+
+app.post("/go", (req, res) => {
+    console.log("go");
+    console.log(req.body.time);
+    console.log(req.body.location);
+})
+
+app.post("/sendTime", (req, res) => {
+    console.log("SendTime!");
+    // 변수를 선언합니다.
+    var body = req.body;
+
+
+    if (req.user) {
+        // 데이터베이스 쿼리를 실행합니다.
+        connection.query('SELECT * from viewingTime', (error, rows) => {
+            var hasData = false;
+            var index = 0;
+            var time = 0;
+            console.log(req.user);
+
+            if (error) {
+                console.log(error);
+            }
+            else {
+                if (req.user) {
+
+                }
+                for (var i = 0; i < rows.length; i++) {
+                    if (rows[i].userId == req.user && rows[i].location == body.location) {
+                        hasData = true;
+                        time = Number(rows[i].period);
+                        console.log("hasData!");
+                    }
+                }
+                if (!hasData) {
+                    connection.query("INSERT INTO viewingTime VALUES(?,?,?)",
+                        [req.user, body.location, body.time],
+                        function (error) {
+                            if (error)
+                                throw error;
+                            hasData = false;
+                        }
+                    )
+                }
+                else {
+                    time += Number(body.time);
+                    connection.query("UPDATE viewingTime set period=? where userId=? AND location=?",
+                        [time, req.user, body.location],
+                        function (error) {
+                            if (error)
+                                throw error;
+                            hasData = false;
+                            index = 0;
+                            time = 0;
+                        }
+                    )
+                }
+            }
+        });
+
+    }
+
 
 })
 
