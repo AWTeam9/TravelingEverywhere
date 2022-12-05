@@ -18,7 +18,7 @@
             <span id="logo">Traveling Everywhere</span>
             <nav>
                 <button class="nav-buttons" id="login-btn">Log In</button>
-                <button class="nav-buttons" id="map-btn">Go to World Map</button>
+                <button class="nav-buttons" id="worldmap-btn">Go to World Map</button>
             </nav>
         </div>
     </header>
@@ -42,6 +42,9 @@
     <script>
         document.getElementById("login-btn").addEventListener("click", () => {
             document.location.href = "/login";
+        });
+        document.getElementById("worldmap-btn").addEventListener("click", () => {
+            document.location.href = "/worldmap";
         });
     </script>
 

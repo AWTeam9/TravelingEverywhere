@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../css/detail.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    
+    <link rel="stylesheet" href="../css/worldmap.css">
+
     <title>Traveling Everywhere</title>
 </head>
-
 <body>
     <header>
         <div class="top-bar">
@@ -25,60 +23,15 @@
     </header>
 
     <div class="contents">
-        <h1>
-            <%= data.countryName %>
-        </h1>
-        <img src="<%= data.countryImage %>">
-        <p>
-            <%- data.countryDescription %>
-        </p>
-
-        <div>
-            <h2>코로나 이슈</h2>
-
-            <p>
-                <%- data.covidIssue %>
-            </p>
-        </div>
-
-        <div>
-            <h2>날씨</h2>
-            <p>
-                <%- data.weather %>
-            </p>
-        </div>
-
-        <div>
-            <h2>보건</h2>
-            <p>
-                <%- data.health %>
-            </p>
-        </div>
-
-        <div>
-            <h2>언어</h2>
-            <p>
-                <%- data.lang %>
-            </p>
-        </div>
-
-        <div>
-            <h2>
-                <%= data.locationName %>
-            </h2>
-            <img src="<%= data.locationImage %>">
-            <p>
-                <%- data.locationInfo %>
-            </p>
-        </div>
+        <img src="../img/world-map.png">
     </div>
 
-    <footer>
+    <!-- <footer>
         <div id="contact">
             <p>이하은 jxlhe46@seoultech.ac.kr</p>
             <p>한윤재 ucando0320@seoultech.ac.kr</p>
         </div>
-    </footer>
+    </footer> -->
 
     <script>
         document.getElementById("mypage-btn").addEventListener("click", () => {
@@ -86,5 +39,4 @@
         });
     </script>
 </body>
-
 </html>
