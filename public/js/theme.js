@@ -28,9 +28,9 @@ for (var i = 0; i < THEME_SIZE; i++) {
     // 테마별 여행지 이미지 
     for (var j = 0; j < themeItemNumbers[i]; j++) {
         const link = document.createElement("a");
-        //const locationName = locationNames[i][j];
-        //link.href = `/main?location=${locationName}`;
-        link.href = "../html/main.html"
+        const locationName = locationNames[i][j];
+        link.href = `/main?location=${locationName}`;
+        //link.href = "../html/main.html"
 
         const img = document.createElement("img");
         img.src = `../img/theme/${folderNames[i]}/${j + 1}.jpg`;
