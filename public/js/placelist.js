@@ -1,5 +1,4 @@
-const THEME_SIZE = 4;
-const themeNames = ["바다", "산", "도시", "마을"];
+const placeList = document.querySelector(".place-list");
 
 const beachList = [
     "Motu Tane Island - Bora Bora, French Polynesia",
@@ -31,7 +30,8 @@ const villageList = [
 ];
 
 const dataset = [beachList, mountainList, cityList, villageList];
-const placeList = document.querySelector(".place-list");
+const THEME_SIZE = 4;
+const themeNames = ["바다", "산", "도시", "마을"];
 
 for(var i = 0; i < THEME_SIZE; i++){
     const themeName = document.createElement("h4");
@@ -48,7 +48,11 @@ for(var i = 0; i < THEME_SIZE; i++){
         item.setAttribute("class", "theme-item");
         item.innerText = arr[j];
 
-        // TODO: 텍스트에 링크 추가하기 
+        item.addEventListener("click", () => {
+            const seperatedStr = item.innerText.split('-');
+            const locationName = seperatedStr[0].trim();
+            document.location.href = `/main?location=${locationName}`;
+        });
 
         themeItems.appendChild(item);
     }
