@@ -22,7 +22,7 @@ body {
     place-items: center;
 
     color: white;
-    background: #009578;
+    background: #42A5C2;
     border: none;
     border-radius: 5px 0 0 5px;
     outline: none;
@@ -30,7 +30,7 @@ body {
 }
 
 .side-panel-toggle:hover {
-    background: #007960;
+    background: #3b94af;
 }
 
 .sp-icon-close {
@@ -44,7 +44,7 @@ body {
     flex-shrink: 0;
     padding: 15px;
     color: white;
-    background: #009578;
+    background: #42A5C2;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
 }
 
@@ -89,12 +89,12 @@ body {
 .place-list {
     height: 200px;
     overflow-y: scroll;
-    background: #007960;
+    background: #3b94af;
     margin-top: 20px;
 }
 
 .theme-name {
-    background: #005846;
+    background: #34829a;
     padding: 10px;
     margin: 0;
     font-size: 14px;
@@ -109,7 +109,7 @@ body {
 }
 
 .theme-item:hover {
-    background: #016d57;
+    background: #34829a93;
 }
 
 .video-speed-box {
@@ -133,7 +133,7 @@ body {
 .radio-box {
     padding: 5px;
     margin-top: 20px;
-    background: #007960;
+    background: #3b94af;
 }
 
 .radio-controller {
@@ -143,7 +143,7 @@ body {
 .radio-play-toggle {
     display: inline-block;
     color: white;
-    background: #007960;
+    background-color: #3b94af;
     border: none;
     outline: none;
     cursor: pointer;

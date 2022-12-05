@@ -6,7 +6,7 @@ const folderNames = ["beach", "mountain", "city", "village"];
 const themeItemNumbers = [5, 4, 5, 6];
 
 const beachNames = ["Motu Tane", "Oahu", "Kuramathi", "Onok", "Woljeongri"];
-const mountainNames = ["Snoqualmie Region", "British Columbia", "Issaquah", "Belgrad Forest"];
+const mountainNames = ["Snoqualmie Region", "Issaquah", "British Columbia", "Belgrad Forest"];
 const cityNames = ["Rome", "Amsterdam", "Vienna", "Budapest", "Tuscany"];
 const villageNames = ["Jeonju Hanok", "Moureze", "Kyoto", "Gimmelwald", "Lauterbrunnen", "Positano"];
 
@@ -16,7 +16,7 @@ for (var i = 0; i < THEME_SIZE; i++) {
     const themeList = document.createElement("div");
     themeList.setAttribute("class", "theme-list");
 
-    // 각 테마의 이름 
+    // 테마 이름 
     const themeName = document.createElement("h3");
     themeName.setAttribute("class", "theme-name");
     themeName.innerText = themeNames[i];
@@ -25,12 +25,12 @@ for (var i = 0; i < THEME_SIZE; i++) {
     const scrollMenu = document.createElement("div");
     scrollMenu.setAttribute("class", "scroll-menu");
 
-    // 테마별 이미지 추가 
+    // 테마별 여행지 이미지 
     for (var j = 0; j < themeItemNumbers[i]; j++) {
         const link = document.createElement("a");
-        const locationName = locationNames[i][j];
-        link.href = `/main?location=${locationName}`;
-        //link.href = "../html/main.html"
+        //const locationName = locationNames[i][j];
+        //link.href = `/main?location=${locationName}`;
+        link.href = "../html/main.html"
 
         const img = document.createElement("img");
         img.src = `../img/theme/${folderNames[i]}/${j + 1}.jpg`;

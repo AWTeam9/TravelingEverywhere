@@ -9,17 +9,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-
-    </script>
     <title>Traveling Everywhere</title>
 </head>
 
 <body>
     <input type="hidden" id="data" value="<%=data.place%>">
     <input type="hidden" id="url" value="<%=data.data.url%>">
-    <div class="wrapper">
 
+    <div class="wrapper">
         <iframe title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
@@ -36,7 +33,14 @@
                 account_circle
             </span>
 
-            <div class="place-list"></div>
+            <div class="place-list">
+                <!-- <h4 class="theme-name"></h4>
+                <div class="theme-items">
+                    <p class="theme-item">
+                        <a href=""></a>
+                    </p>
+                </div> -->
+            </div>
 
             <div class="video-speed-box">
                 <span style="font-size: 14px;">Video Speed</span>
@@ -75,6 +79,7 @@
             </span>
         </div>
     </div>
+    
     <script src="../js/video.js"></script>
     <script src="../js/sidepanel.js"></script>
     <script src="../js/placelist.js"></script>
@@ -94,8 +99,6 @@
         document.getElementById("home-btn").addEventListener("click", () => {
             document.location.href = "/";
         });
-
-
     </script>
 
 </body>
