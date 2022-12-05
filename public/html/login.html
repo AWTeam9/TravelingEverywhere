@@ -7,43 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-
-        .contents {
-            padding-top: 60px;
-            padding-bottom: 110px;
-        }
-
-        #google_login_btn {
-            background: url("/images/btn_google_signin_dark_normal_web@2x.png") no-repeat;
-            background-size: 100% 100%;
-            cursor: pointer;
-            width: 200px;
-            height: 50px;
-        }
-
-        #previous-btn {
-            color: white;
-            outline: none;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px rgb(108, 108, 108);
-        }
-    </style>
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body>
     <header>
         <div class="top-bar">
             <span id="logo">Traveling Everywhere</span>
-            <nav>
-                <span class="material-icons" id="previous-btn">arrow_back</span>
-            </nav>
         </div>
     </header>
 
@@ -59,12 +29,6 @@
             <p>한윤재 ucando0320@seoultech.ac.kr</p>
         </div>
     </footer>
-
-    <script>
-         document.getElementById("previous-btn").addEventListener("click", () => {
-            document.location.href = "/select";
-        });
-    </script>
 </body>
 
 </html>
