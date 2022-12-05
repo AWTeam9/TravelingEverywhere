@@ -1,4 +1,4 @@
-const contents = document.querySelector(".contents"); 
+const contents = document.querySelector(".contents");
 
 const THEME_SIZE = 4;
 const themeNames = ["바다", "산", "도시", "마을"];
@@ -35,7 +35,7 @@ for (var i = 0; i < THEME_SIZE; i++) {
         const img = document.createElement("img");
         img.src = `../img/theme/${folderNames[i]}/${j + 1}.jpg`;
         img.setAttribute("class", "place-img");
-        
+
         link.appendChild(img);
         scrollMenu.appendChild(link);
     }

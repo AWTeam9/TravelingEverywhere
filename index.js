@@ -9,7 +9,8 @@ const { mainModule } = require('process');
 var ejs = require('ejs');
 const { response, query } = require('express');
 const { connect } = require('http2');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const { userInfo } = require('os');
 
 const app = express();
 const PORT = 52273;
@@ -135,7 +136,14 @@ passport.use(
 
 // 라우팅 정의
 app.get("/", (req, res) => {
-    res.redirect("/select");
+    fs.readFile("./public/html/index.html", (error, data) => {
+        if (error) {
+            console.log(error);
+            return res.sendStatus(500);
+        }
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
 });
 
 // 서버 실행
@@ -147,6 +155,7 @@ app.listen(PORT, () => {
 // 이미 로그인한 회원이라면(session 정보가 존재한다면) main화면으로 리다이렉트
 app.get("/login", (req, res) => {
     if (req.user) return res.redirect("/mypage");
+    console.log(req.user);
     fs.readFile("./public/html/login.html", (error, data) => {
         if (error) {
             console.log(error);
@@ -162,6 +171,7 @@ app.get("/login", (req, res) => {
 app.get("/mypage", (req, res) => {
     if (!req.user) return res.redirect("/login");
     fs.readFile("./public/html/mypage.html", "utf-8", (error, data) => {
+        var userInfo;
         if (error) {
             console.log(error);
             return res.sendStatus(500);
@@ -175,12 +185,39 @@ app.get("/mypage", (req, res) => {
                     if (error)
                         throw error;
 
-                    res.send(ejs.render(data, {
-                        data: item[0]
-                    }))
-
+                    userInfo = item[0];
                 }
             );
+
+            if (req.user) {
+                connection.query("SELECT * from viewingTime ORDER BY period DESC;",
+                    function (error, item) {
+                        if (error)
+                            throw error;
+                        else {
+                            var ranks = [];
+
+
+                            for (var i = 0; i < item.length; i++) {
+                                if (item[i].userId == req.user) {
+                                    console.log(item[i].userId);
+                                    console.log(req.user);
+                                    ranks.push(item[i]);
+                                }
+                            }
+
+                            res.send(ejs.render(data, {
+                                data: {
+                                    ranks: ranks,
+                                    userInfo: userInfo
+                                }
+                            }))
+                        }
+                        
+
+                    }
+                )
+            };
 
 
             //connection.query("SELECT * from ") todo 랭킹 차트 불러오기
@@ -367,6 +404,8 @@ app.get("/detail", (req, res) => {
 
                 }
             )
+
+
         })
         // 해당 장소 정보 매칭해주기
         // main에서의 쿼리와 같은 방식으로 받아주기

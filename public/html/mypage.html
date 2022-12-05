@@ -25,12 +25,12 @@
         <div id="profile">
             <div id="name">
                 <p>
-                    <%= data.displayName %>
+                    <%= data.userInfo.displayName %>
                 </p>
             </div>
             <div id="email">
                 <p>
-                    <%= data.email %>
+                    <%= data.userInfo.email %>
                 </p>
             </div>
             <a id="logout" href="/logout">logout</a>
@@ -38,31 +38,56 @@
         <div id="myRanking">
             <h2>My Travel Ranking</h2>
             <hr>
-            <table id="ranking">
-                <th>
-                    <p>순위</p>
-                </th>
-                <th id="middle">
-                    <p>지역</p>
-                </th>
-                <th>
-                    <p>여행 시간</p>
-                </th>
-                <tr>
-                    <td>
-                        <p>1</p>
-                    </td>
-                    <td id="middle">
-                        <p>Snoqualmie Region</p>
-                    </td>
-                    <td>
-                        <p>Time</p>
-                    </td>
-                </tr>
-            </table>
+            <% if (data.ranks.length) { %>
+                <table id="ranking">
+                    <th>
+                        <p>순위</p>
+                    </th>
+                    <th id="middle">
+                        <p>지역</p>
+                    </th>
+                    <th>
+                        <p>여행 시간</p>
+                    </th>
+                    <% data.ranks.forEach(function(item, index) { %>
+                        <tr>
+                            <td>
+                                <p>
+                                    <%= index+1 %>
+                                </p>
+                            </td>
+                            <td id="middle">
+                                <p>
+                                    <%= item.location %>
+                                </p>
+                            </td>
+                            <td>
+                                <p id="time">
+                                    <%= parseInt(item.period/60/60/1000) %> 
+                                    :
+                                    <%= parseInt((item.period/60/1000)%60) %>
+                                    :
+                                    <%= parseInt((item.period/1000)%60) %>
+                                </p>
+                                <script>
+                                    timeValue = document.getElementById("time").innerHTML;
+                                    time = Number(timeValue);
+                                    sec = parseInt(time / 1000);
+                                    min = parseInt(sec / 60);
+                                    hour = parseInt(min / 60);
+
+                                    timeValue = hour + " : " + min + " : " + sec;
+                                    console.log(timeValue);
+
+                                </script>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </table>
+            <% }; %>
         </div>
     </div>
-
+    
     <footer>
         <div id="contact">
             <p>이하은 jxlhe46@seoultech.ac.kr</p>
