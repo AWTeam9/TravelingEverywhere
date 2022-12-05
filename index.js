@@ -136,7 +136,14 @@ passport.use(
 
 // 라우팅 정의
 app.get("/", (req, res) => {
-    res.redirect("/select");
+    fs.readFile("./public/html/index.html", (error, data) => {
+        if (error) {
+            console.log(error);
+            return res.sendStatus(500);
+        }
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
 });
 
 // 서버 실행
@@ -198,8 +205,6 @@ app.get("/mypage", (req, res) => {
                                     ranks.push(item[i]);
                                 }
                             }
-
-                            console.log(ranks);
 
                             res.send(ejs.render(data, {
                                 data: {
