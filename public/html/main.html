@@ -9,34 +9,39 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="http://code.jquery.com/jquery.min.js"></script>
     <script src="../js/main.js"></script>
-    <script>
-
-    </script>
     <title>Traveling Everywhere</title>
 </head>
 
 <body>
     <input type="hidden" id="data" value="<%=data.place%>">
     <input type="hidden" id="url" value="<%=data.data.url%>">
-    <div class="wrapper">
 
-        <iframe title="YouTube video player" frameborder="0"
+    <div class="wrapper">
+        <iframe class="video-container" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
+        
         <button class="side-panel-toggle" type="button">
             <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
         </button>
 
         <div class="side-panel hidden">
-            <button class="button" id="detail-btn"><a href="/detail">Detail</a></button>
+            <button class="button" id="detail-btn">Detail</button>
 
             <span class="material-icons button" id="mypage-btn">
                 account_circle
             </span>
 
-            <div class="place-list"></div>
+            <div class="place-list">
+                <!-- <h4 class="theme-name"></h4>
+                <div class="theme-items">
+                    <p class="theme-item">
+                        <a href=""></a>
+                    </p>
+                </div> -->
+            </div>
 
             <div class="video-speed-box">
                 <span style="font-size: 14px;">Video Speed</span>
@@ -75,6 +80,7 @@
             </span>
         </div>
     </div>
+    
     <script src="../js/video.js"></script>
     <script src="../js/sidepanel.js"></script>
     <script src="../js/placelist.js"></script>
@@ -84,7 +90,12 @@
         });
 
         document.querySelector(".radio-play-toggle").addEventListener("click", () => {
-            // TODO: 아이콘 변경하기 
+            // TODO: 아이콘 변경하기
+        });
+
+        document.getElementById("detail-btn").addEventListener("click", () => {
+            const place = document.getElementById('data').value;
+            document.location.href = `/detail?location=${place}`;
         });
 
         document.getElementById("mypage-btn").addEventListener("click", () => {
@@ -94,8 +105,6 @@
         document.getElementById("home-btn").addEventListener("click", () => {
             document.location.href = "/";
         });
-
-
     </script>
 
 </body>
