@@ -2,34 +2,27 @@
 <html>
 
 <head>
-    <style>
-        #total {
-            margin-right: 3%;
-            margin-left: 3%;
-        }
-
-        h2 {
-            margin-left: 3%;
-            color: #707070;
-        }
-
-        p {
-            margin-left: 3%;
-        }
-
-        img {
-            width: 500px;
-            height: auto;
-            margin-left: 10%;
-        }
-    </style>
-    <script>
-
-    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/detail.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <title>Traveling Everywhere</title>
 </head>
 
 <body>
-    <div id="total">
+    <header>
+        <div class="top-bar">
+            <span id="logo">Traveling Everywhere</span>
+            <nav>
+                <span class="material-icons" id="previous-btn">arrow_back</span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contents">
         <h1>
             <%= data.countryName %>
         </h1>
@@ -78,6 +71,18 @@
         </div>
     </div>
 
+    <footer>
+        <div id="contact">
+            <p>이하은 jxlhe46@seoultech.ac.kr</p>
+            <p>한윤재 ucando0320@seoultech.ac.kr</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("previous-btn").addEventListener("click", () => {
+            document.location.href = "./main.html";
+        });
+    </script>
 </body>
 
 </html>

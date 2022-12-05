@@ -1,0 +1,62 @@
+body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.contents {
+    padding-top: 60px;
+    padding-bottom: 110px;
+}
+
+#previous-btn {
+    color: white;
+    outline: none;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px rgb(108, 108, 108);
+}
+
+#profile {
+    padding-left: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+
+#name {
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 5%;
+}
+
+#email {
+    margin-bottom: 5%;
+}
+
+#logout {
+    text-decoration: none;
+    color: gray;
+}
+
+hr {
+    width: auto;
+}
+
+
+#myRanking {
+    margin-top: 3%;
+    width: fit-content;
+    margin: auto;
+
+}
+
+#ranking {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th,
+td #middle {
+    width: 200px;
+}
