@@ -16,7 +16,7 @@ window.onload = function () {
 
 const nextPlay = async (audio) => {
     const res = await fetch('http://localhost:52273/music?num=' + num);
-    const result = await res.json()
+    const result = await res.json();
 
     console.log(result.src);
     audio.src = result.src;
