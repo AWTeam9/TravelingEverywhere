@@ -21,7 +21,7 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
         </iframe>
-
+        
         <button class="side-panel-toggle" type="button">
             <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
@@ -95,7 +95,6 @@
 
         document.getElementById("detail-btn").addEventListener("click", () => {
             const place = document.getElementById('data').value;
-            console.log(place);
             document.location.href = `/detail?location=${place}`;
         });
 

@@ -6,11 +6,11 @@ const folderNames = ["beach", "mountain", "city", "village"];
 const themeItemNumbers = [5, 4, 5, 6];
 
 const beachNames = ["Motu Tane", "Oahu", "Kuramathi", "Onok", "Woljeongri"];
-const mountainNames = ["Snoqualmie Region", "British Columbia", "Issaquah", "Belgrad Forest"];
+const mountainNames = ["Snoqualmie Region", "Issaquah", "British Columbia", "Belgrad Forest"];
 const cityNames = ["Rome", "Amsterdam", "Vienna", "Budapest", "Tuscany"];
 const villageNames = ["Jeonju Hanok", "Moureze", "Kyoto", "Gimmelwald", "Lauterbrunnen", "Positano"];
 
-const locationNames = [beachNames, mountainNames, cityNames, villageNames];
+const locationNames = [beachNames, mountainNames, cityNames, villageNames]; 
 
 for (var i = 0; i < THEME_SIZE; i++) {
     const themeList = document.createElement("div");
