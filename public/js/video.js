@@ -1,4 +1,7 @@
 const videoSoundButton = document.querySelector("#video-sound-btn");
+const videoSpeedFirst = document.querySelector("#speed1-btn");
+const videoSpeedSecond = document.querySelector("#speed2-btn");
+const videoSpeedThird = document.querySelector("#speed3-btn");
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -9,7 +12,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 //const url = document.getElementById("url");
 //const videoUrl = url.value;
-const _videoId = "lOGE7nNkL0Y";
+const _videoId = "PyFN_FYwqvc";
 //const videoControl = "?autoplay=1&mute=1&loop=1&controls=0&disablekb=1&start=25";
 
 // 3. This function creates an <iframe> (and YouTube player)
@@ -28,7 +31,7 @@ function onYouTubeIframeAPIReady() {
             'loop': 1, 
             'controls': 0,
             'disablekb': 1,
-            'start': 25
+            'start': 35
         },
     });
 }
@@ -54,4 +57,19 @@ videoSoundButton.addEventListener("click", () => {
         videoSoundButton.innerText = 'ON';
         player.mute();
     }
-})
+});
+
+videoSpeedFirst.addEventListener("click", () => {
+    player.setPlaybackRate(Number('1.0'));
+    console.log(player.getPlaybackRate());
+});
+
+videoSpeedSecond.addEventListener("click", () => {
+    player.setPlaybackRate(Number('1.5'));
+    console.log(player.getPlaybackRate());
+});
+
+videoSpeedThird.addEventListener("click", () => {
+    player.setPlaybackRate(Number('2.0'));
+    console.log(player.getPlaybackRate());
+});
