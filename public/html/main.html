@@ -17,11 +17,9 @@
     <input type="hidden" id="url" value="<%=data.data.url%>">
 
     <div class="wrapper">
-        <iframe class="video-container" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-        
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+        <div id="video-player"></div>
+
         <button class="side-panel-toggle" type="button">
             <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
@@ -50,7 +48,7 @@
 
             <div class="video-sound-box">
                 <span style="font-size: 14px;">Video Sound</span>
-                <button class="button" id="sound-toggle-btn">OFF</button>
+                <button class="button" id="video-sound-btn">ON</button>
             </div>
 
             <div class="radio-box">
@@ -80,6 +78,7 @@
     <script src="../js/video.js"></script>
     <script src="../js/sidepanel.js"></script>
     <script src="../js/placelist.js"></script>
+
     <script>
         document.querySelector(".side-panel-toggle").addEventListener("click", () => {
             document.querySelector(".wrapper").classList.toggle("side-panel-open");
