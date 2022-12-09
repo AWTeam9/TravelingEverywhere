@@ -12,8 +12,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 //const url = document.getElementById("url");
 //const videoUrl = url.value;
-const _videoId = "PyFN_FYwqvc";
-//const videoControl = "?autoplay=1&mute=1&loop=1&controls=0&disablekb=1&start=25";
+const videoUrl = "https://www.youtube.com/embed/orQ03DeeUIM";
+const _videoId = videoUrl.slice(30);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
