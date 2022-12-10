@@ -1,28 +1,28 @@
 const placeList = document.querySelector(".place-list");
 
 const beachList = [
-    "Motu Tane Island - Bora Bora, French Polynesia",
-    "Oahu - Hawaii",
+    "Motu Tane - French Polynesia",
+    "Oahu - USA Hawaii",
     "Kuramathi - Maldives",
-    "Onok - Palawan, Philipines",
-    "월정리 해변 - 대한민국, 제주도 구좌읍 "
+    "Onok - Philipines Palawan",
+    "Woljeongri - Korea Jeju"
 ];
 const mountainList = [
-    "Snoqualmie Region - Washington State, USA",
-    "Issaquah Squak Mountain - Washington State, USA",
-    "British Columbia Forest - Canada",
-    "Belgrad Forest - Istanbul, Turkey"
+    "Snoqualmie Region - USA Washington State",
+    "Issaquah - USA Washington State",
+    "British Columbia - Canada",
+    "Belgrad Forest - Turkey Istanbul"
 ];
 const cityList = [
     "Rome - Italy",
-    "Tuscany - Italy",
     "Amsterdam - Netherlands",
     "Vienna - Austria",
-    "Budapest - Hungary"
+    "Budapest - Hungary",
+    "Tuscany - Italy",
 ];
 const villageList = [
-    "한옥 마을 - 대한민국, 전주",
-    "Mourèze - France",
+    "Jeonju Hanok - Korea",
+    "Moureze - France",
     "Kyoto - Japan",
     "Gimmelwald - Switzerland",
     "Lauterbrunnen - Switzerland",

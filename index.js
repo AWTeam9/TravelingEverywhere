@@ -95,7 +95,7 @@ passport.use(
         {
             clientID: GOOGLE_CLIENT_ID,
             clientSecret: GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:52273/auth/google/callback",
+            callbackURL: "http://10.50.46.202.nip.io:52273/auth/google/callback",
             passReqToCallback: true,
         },
         function (request, accessToken, refreshToken, profile, done) {
@@ -281,6 +281,10 @@ app.get('/music', (req, res) => {
 app.get("/select", (req, res) => {
     res.sendFile(__dirname + "/public/html/select.html");
     //영상 자료 넣어줘야 하나?
+})
+
+app.get("/worldmap", (req, res) => {
+    res.sendFile(__dirname + "/public/html/worldmap.html")
 })
 
 

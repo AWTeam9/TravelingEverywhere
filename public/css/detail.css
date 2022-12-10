@@ -11,24 +11,41 @@ body {
 }
 
 .contents {
-    margin-right: 3%;
-    margin-left: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
     padding-top: 60px;
     padding-bottom: 110px;
 }
 
+h1 {
+    font-family:'Jalnan';
+}
+
 h2 {
+    font-family: 'Jalnan';
     margin-left: 3%;
     color: #707070;
 }
 
 p {
     margin-left: 3%;
+    font-size: large;
+    font-family: 'KangwonAll_Light'
 }
 
 img {
     width: 500px;
     height: auto;
     margin-left: 10%;
+}
+
+@font-face {
+    font-family: 'KangwonAll_Light';
+    src: url(../font/KangwonEduAll_Light.woff);
+}
+
+@font-face {
+    font-family: 'Jalnan';
+    src: url(../font/Jalnan.woff);
 }
 
