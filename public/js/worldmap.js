@@ -129,31 +129,25 @@ function initMap() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    const infoWindow = new google.maps.InfoWindow();
     const latlngbounds = new google.maps.LatLngBounds();
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
     for (var i = 0; i < markers.length; i++) {
-        var data = markers[i];
-        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-        var marker = new google.maps.Marker({
+        const data = markers[i];
+        const myLatlng = new google.maps.LatLng(data.lat, data.lng);
+        const marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
             title: data.title
         });
-
         google.maps.event.addListener(marker, 'click', () => {
             window.location.href = `/main?location=${data.location}`;
             //window.location.href = "../html/main.html";
         });
-
         latlngbounds.extend(marker.position);
     }
-
-    var bounds = new google.maps.LatLngBounds();
     map.setCenter(latlngbounds.getCenter());
     map.fitBounds(latlngbounds);
 }
 
 window.initMap = initMap;
-
