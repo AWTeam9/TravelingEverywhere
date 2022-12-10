@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
 
     <title>Traveling Everywhere</title>
 </head>
+
 <body>
     <header>
         <div class="top-bar">
@@ -23,17 +25,12 @@
     </header>
 
     <div class="contents">
-        <img src="../img/world-map.png">
-        <div class="country-list">
-        </div>
+        <div id="map"></div>
     </div>
 
-    <footer>
-        <div id="contact">
-            <p>이하은 jxlhe46@seoultech.ac.kr</p>
-            <p>한윤재 ucando0320@seoultech.ac.kr</p>
-        </div>
-    </footer>
+    <script src="../js/worldmap.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_IH6yYzQhOiXZ_H2vQtJUqnpZYPhtc60&callback=initMap">
+    </script>
 
     <script>
         document.getElementById("logo").addEventListener("click", () => {
@@ -43,7 +40,6 @@
             document.location.href = "/mypage";
         });
     </script>
-
-    <script src="../js/worldmap.js"></script>
 </body>
+
 </html>
