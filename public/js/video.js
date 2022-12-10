@@ -10,9 +10,9 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-//const url = document.getElementById("url");
-//const videoUrl = url.value;
-const videoUrl = "https://www.youtube.com/embed/orQ03DeeUIM";
+const url = document.getElementById("url");
+const videoUrl = url.value;
+//const videoUrl = "https://www.youtube.com/embed/lOGE7nNkL0Y";
 const _videoId = videoUrl.slice(30);
 
 // 3. This function creates an <iframe> (and YouTube player)
