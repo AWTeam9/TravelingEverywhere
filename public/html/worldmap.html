@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/worldmap.css">
+
+    <title>Traveling Everywhere</title>
+</head>
+
+<body>
+    <header>
+        <div class="top-bar">
+            <span id="logo">Traveling Everywhere</span>
+            <nav>
+                <span class="material-icons" id="mypage-btn">account_circle</span>
+            </nav>
+        </div>
+    </header>
+
+    <div class="contents">
+        <div id="map"></div>
+    </div>
+
+    <script src="../js/worldmap.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_IH6yYzQhOiXZ_H2vQtJUqnpZYPhtc60&callback=initMap">
+    </script>
+
+    <script>
+        document.getElementById("logo").addEventListener("click", () => {
+            document.location.href = "/select";
+        });
+        document.getElementById("mypage-btn").addEventListener("click", () => {
+            document.location.href = "/mypage";
+        });
+    </script>
+</body>
+
+</html>

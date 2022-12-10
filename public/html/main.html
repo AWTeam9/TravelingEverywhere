@@ -17,11 +17,9 @@
     <input type="hidden" id="url" value="<%=data.data.url%>">
 
     <div class="wrapper">
-        <iframe class="video-container" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-        </iframe>
-        
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+        <div id="video-player"></div>
+
         <button class="side-panel-toggle" type="button">
             <span class="material-icons sp-icon-open">keyboard_double_arrow_left</span>
             <span class="material-icons sp-icon-close">keyboard_double_arrow_right</span>
@@ -29,11 +27,7 @@
 
         <div class="side-panel hidden">
             <button class="button" id="detail-btn">Detail</button>
-
-            <span class="material-icons button" id="mypage-btn">
-                account_circle
-            </span>
-
+            <span class="material-icons button" id="mypage-btn">account_circle</span>
             <div class="place-list">
                 <!-- <h4 class="theme-name"></h4>
                 <div class="theme-items">
@@ -54,22 +48,25 @@
 
             <div class="video-sound-box">
                 <span style="font-size: 14px;">Video Sound</span>
-                <button class="button" id="sound-toggle-btn">OFF</button>
+                <button class="button" id="video-sound-btn">ON</button>
             </div>
 
             <div class="radio-box">
-                <p style="font-size: 14px; text-align: center;">Radio</p>
+                <p id="music-title">Music Title</p>
+
                 <div class="radio-controller">
-                    <span class="material-icons button">
+                    <span class="material-icons button" id="radio-prev-btn">
                         skip_previous
                     </span>
 
                     <button class="radio-play-toggle" type="button">
-                        <span class="material-icons button" id="radio-icon-play">play_arrow</span>
-                        <span class="material-icons button" id="radio-icon-pause">pause</span>
+                        <span class="material-icons button" id="radio-play-btn">
+                            play_arrow
+                        </span>
+                        <span class="material-icons button" id="radio-pause-btn">pause</span>
                     </button>
 
-                    <span class="material-icons button">
+                    <span class="material-icons button" id="radio-next-btn">
                         skip_next
                     </span>
                 </div>
@@ -81,16 +78,9 @@
         </div>
     </div>
 
-    <script src="../js/video.js"></script>
-    <script src="../js/sidepanel.js"></script>
-    <script src="../js/placelist.js"></script>
     <script>
         document.querySelector(".side-panel-toggle").addEventListener("click", () => {
             document.querySelector(".wrapper").classList.toggle("side-panel-open");
-        });
-
-        document.querySelector(".radio-play-toggle").addEventListener("click", () => {
-            // TODO: 아이콘 변경하기
         });
 
         document.getElementById("detail-btn").addEventListener("click", () => {
@@ -107,6 +97,10 @@
         });
     </script>
 
+    <script src="../js/video.js"></script>
+    <script src="../js/sidepanel.js"></script>
+    <script src="../js/placelist.js"></script>
+    <script src="../js/music.js"></script>
 </body>
 
 </html>

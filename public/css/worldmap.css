@@ -1,0 +1,22 @@
+body {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+#mypage-btn {
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.contents {
+    padding-top: 60px;
+}
+
+#map {
+    display: inline-flex;
+    width: 100%;
+    height: 650px;
+}
+
