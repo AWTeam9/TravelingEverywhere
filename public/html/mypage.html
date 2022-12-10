@@ -8,15 +8,13 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/mypage.css">
+    <title>Traveling Everywhere</title>
 </head>
 
 <body>
     <header>
         <div class="top-bar">
             <span id="logo">Traveling Everywhere</span>
-            <nav>
-                <span class="material-icons" id="previous-btn">arrow_back</span>
-            </nav>
         </div>
     </header>
 
@@ -96,11 +94,10 @@
     </footer>
 
     <script>
-        document.getElementById("previous-btn").addEventListener("click", () => {
-            document.location.href = "/main";
+        document.getElementById("logo").addEventListener("click", () => {
+            document.location.href = "/select";
         });
     </script>
-
 </body>
 
 </html>

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../css/detail.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/footer.css">
+    
     <title>Traveling Everywhere</title>
 </head>
 
@@ -17,7 +19,7 @@
         <div class="top-bar">
             <span id="logo">Traveling Everywhere</span>
             <nav>
-                <span class="material-icons" id="previous-btn">arrow_back</span>
+                <span class="material-icons" id="mypage-btn">account_circle</span>
             </nav>
         </div>
     </header>
@@ -79,8 +81,11 @@
     </footer>
 
     <script>
-        document.getElementById("previous-btn").addEventListener("click", () => {
-            document.location.href = "/main";
+        document.getElementById("logo").addEventListener("click", () => {
+            document.location.href = "/select";
+        });
+        document.getElementById("mypage-btn").addEventListener("click", () => {
+            document.location.href = "/mypage";
         });
     </script>
 </body>
