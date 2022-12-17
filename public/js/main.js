@@ -2,7 +2,6 @@ var start;
 window.onload = function () {
     start = new Date();
     console.log("onload!");
-    var data = document.getElementById("data");
 
 }
 
