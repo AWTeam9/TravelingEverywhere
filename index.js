@@ -1,16 +1,20 @@
 const express = require('express');
+const fs = require('fs');
+var ejs = require('ejs');
+const bodyParser = require('body-parser');
+
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
-const mysql = require('mysql');
 const passport = require('passport');
-const fs = require('fs');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const { mainModule } = require('process');
-var ejs = require('ejs');
+
+const mysql = require('mysql');
+
 const { response, query } = require('express');
 const { connect } = require('http2');
-const bodyParser = require('body-parser');
 const { userInfo } = require('os');
+
 
 const app = express();
 const PORT = 52273;
@@ -22,8 +26,6 @@ require('dotenv').config();
 const GOOGLE_CLIENT_ID = process.env.client_id;
 const GOOGLE_CLIENT_SECRET = process.env.client_secret;
 
-
-
 const options = {
     host: 'localhost',
     user: process.env.DATABASE_USERNAME,
@@ -33,21 +35,7 @@ const options = {
 
 const connection = mysql.createConnection(options);
 
-const bgm_src = []
-
 connection.connect();
-connection.query('SELECT * from bgm', (error, rows) => {
-    if (error) {
-        console.log(error);
-    }
-    else {
-        for (var i = 0; i < rows.length; i++) {
-            bgm_src[i] = rows[i].file_location;
-        }
-    }
-
-    console.log(bgm_src);
-});
 
 // mysql session store 생성
 const sessionStore = new MySQLStore(options);
@@ -56,7 +44,7 @@ const sessionStore = new MySQLStore(options);
 app.use(
     session({
         secret: "secret key",
-        store: sessionStore, // mysql 연결 어떻게?
+        store: sessionStore, 
         resave: false,
         saveUninitialized: false,
     })
@@ -84,18 +72,15 @@ passport.deserializeUser(function (id, done) {
     done(null, id);
 });
 
-let temp_profile;
 
 // Google login 전략
 // 로그인 성공 시 callback으로 request, accessToken, refreshToken, profile 등이 나온다.
-// 해당 콜백 function에서 사용자가 누구인지 done(null, user) 형식으로 넣으면 된다.
-// 이 예시에서는 넘겨받은 profile을 전달하는 것으로 대체했다.
 passport.use(
     new GoogleStrategy(
         {
             clientID: GOOGLE_CLIENT_ID,
             clientSecret: GOOGLE_CLIENT_SECRET,
-            callbackURL: "http://localhost:52273/auth/google/callback",
+            callbackURL: "/auth/google/callback",
             passReqToCallback: true,
         },
         function (request, accessToken, refreshToken, profile, done) {
@@ -219,13 +204,8 @@ app.get("/mypage", (req, res) => {
                 )
             };
 
-
-            //connection.query("SELECT * from ") todo 랭킹 차트 불러오기
         }
 
-
-        // res.writeHead(200, { "Content-Type": "text/html" });
-        // res.end(data);
     });
 });
 
@@ -253,34 +233,15 @@ app.get("/logout", (req, res) => {
     });
 });
 
-// 노래 끝날 때 다음 노래 찾기
-app.get('/music', (req, res) => {
-    console.log("query:" + req.query);
-    if (req.query.num == null) {
-        res.sendFile(__dirname + "/public/html/test.html");
-        console.log(req.query);
-    } else {
-        console.log(req.query)
-        num = parseInt(req.query.num)
-
-        num = num % bgm_src.length;
-
-        const result = {
-            src: bgm_src[num],
-            size: bgm_src.length
-        }
-
-        console.log(result)
-        res.json(result);
-    }
-});
-
-
 
 //여행지 선택 화면 호출
 app.get("/select", (req, res) => {
     res.sendFile(__dirname + "/public/html/select.html");
-    //영상 자료 넣어줘야 하나?
+})
+
+//월드맵 선택 화면
+app.get("/worldmap", (req, res) => {
+    res.sendFile(__dirname + "/public/html/worldmap.html")
 })
 
 
@@ -317,17 +278,10 @@ app.get("/main", async (req, res) => {
 
 })
 
-app.post("/go", (req, res) => {
-    console.log("go");
-    console.log(req.body.time);
-    console.log(req.body.location);
-})
-
 app.post("/sendTime", (req, res) => {
     console.log("SendTime!");
     // 변수를 선언합니다.
     var body = req.body;
-
 
     if (req.user) {
         // 데이터베이스 쿼리를 실행합니다.
@@ -407,8 +361,6 @@ app.get("/detail", (req, res) => {
 
 
         })
-        // 해당 장소 정보 매칭해주기
-        // main에서의 쿼리와 같은 방식으로 받아주기
 
     }
 }

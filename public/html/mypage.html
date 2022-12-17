@@ -19,7 +19,6 @@
     </header>
 
     <div class="contents">
-        <!-- <h1>Mypage</h1> -->
         <div id="profile">
             <div id="name">
                 <p>
@@ -33,6 +32,7 @@
             </div>
             <a id="logout" href="/logout">logout</a>
         </div>
+        
         <div id="myRanking">
             <h2>My Travel Ranking</h2>
             <hr>
@@ -48,7 +48,7 @@
                         <p>여행 시간</p>
                     </th>
                     <% data.ranks.forEach(function(item, index) { %>
-                        <tr>
+                        <tr id="ranks">
                             <td>
                                 <p>
                                     <%= index+1 %>
